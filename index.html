@@ -1,9 +1,22 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
-<title>Hoi</title>
+    <title> URL Longifier </title>
+    <link rel="stylesheet" href="css.css">
 </head>
+
 <body>
-Hi there.
+    <h1>
+        URL Longifier
+    </h1>
+    <form action="newUrl" method="GET" enctype="url-encoded">
+        <input required type="url" name="u" placeholder="Enter url (required)">
+        <input type="text" name="e" placeholder="Text to add in">
+        <input type="checkbox" name="n"> Add not secure page
+        <input type="submit">
+    </form>
 </body>
+
 </html>

@@ -1,0 +1,29 @@
+input:not([type=checkbox]) {
+    display: block;
+    width: 70%;
+}
+
+div.sec {
+    display: none;
+}
+
+body.sec > div.sec {
+    display: block;
+}
+body.sec > div.r {
+    display: none;
+}
+body.sec {
+    background-color: #ff0f0f;
+    color: #FFF;
+}
+
+body.sec img {
+    float: left;
+    height: 45vh;
+    width: auto;
+}
+
+body.sec h1 {
+
+}
