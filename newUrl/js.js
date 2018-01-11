@@ -40,4 +40,6 @@ longURL = location.host + location.pathname.substr(0, location.pathname.slice(0,
 console.log(longURL);
 
 out.value = longURL;
-out.addEventListener("click", () => out.select());
+out.addEventListener("click", function () {
+    out.select();
+});
