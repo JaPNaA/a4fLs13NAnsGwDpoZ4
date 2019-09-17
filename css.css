@@ -1,4 +1,4 @@
-input:not([type=checkbox]) {
+input:not([type="checkbox"]) {
     display: block;
     width: 70%;
 }
@@ -15,15 +15,28 @@ body.sec > div.r {
 }
 body.sec {
     background-color: #ff0f0f;
-    color: #FFF;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body.sec img {
     float: left;
-    height: 45vh;
-    width: auto;
+    width: 33%;
+    height: auto;
+    margin-right: 16px;
 }
 
-body.sec h1 {
+body .sec {
+    width: 100%;
+    max-width: 760px;
+    margin: auto;
+    line-height: normal;
+}
 
+#c {
+    color: #ff0000;
+}
+
+#c:disabled {
+    color: #747474;
 }
