@@ -2,6 +2,7 @@ var targetURL = "",
     extraText = "",
     notSafePageEnabled = false,
     longURL = "",
+    longificationLoops = 3,
     out = document.getElementById("out"),
     search = location.search;
 
@@ -23,18 +24,30 @@ var targetURL = "",
             } else {
                 notSafePageEnabled = false;
             }
+        } else if (key == "l") {
+            longificationLoops = parseInt(value);
         }
     }
 }
 
-targetURL = btoa(btoa(btoa(targetURL)))
+for (let i = 0; i < longificationLoops; i++) {
+    targetURL = btoa(targetURL);
+}
+
+targetURL = targetURL
     .replace(/\+/g, "-")
     .replace(/\//g, "_");
 
 extraText = extraText
     .replace(/[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_]/g, "-");
 
-longURL = location.protocol + "//" + location.host + location.pathname.substr(0, location.pathname.slice(0, location.pathname.length - 1).lastIndexOf('/')) + "/aM4Kwlp04-AA_fM1?aLw=" + (extraText || "aWm24LsZ") + "&Za2=" + targetURL + "&Se23f=" + (notSafePageEnabled ? "aZ43" : "l4Pq");
+longURL =
+    location.protocol + "//" + location.host +
+    location.pathname.substr(0, location.pathname.slice(0, location.pathname.length - 1).lastIndexOf('/')) +
+    "/aM4Kwlp04-AA_fM1?aLw=" + (extraText || "aWm24LsZ") +
+    "&Za2=" + targetURL +
+    "&Se23f=" + (notSafePageEnabled ? "aZ43" : "l4Pq") +
+    "&Vop42ui=" + (longificationLoops * 3164344681);
 
 console.log(longURL);
 

@@ -1,6 +1,7 @@
 var url = "",
     extra = "",
     ns = false,
+    l = 3,
     search = location.search
 
 {
@@ -12,29 +13,35 @@ var url = "",
         a[i][1] = decodeURIComponent(a[i][1]).replace(/\+/g, ' ');
 
         if (a[i][0] == "Za2") {
-            url = atob(atob(atob(a[i][1])));
+            url = a[i][1];
         } else if (a[i][0] == "Se23f") {
             if (a[i][1] == "aZ43") {
                 ns = true;
             } else {
                 ns = false;
             }
+        } else if (a[i][0] == "Vop42ui") {
+            l = parseInt(a[i][1]) / 3164344681;
         }
+    }
+
+    for (let i = 0; i < l; i++) {
+        url = atob(url);
     }
 }
 
 document.getElementById("a").href = url;
 
-if(ns) {
+if (ns) {
     document.body.classList.add("sec");
-    document.getElementById("cb").addEventListener("change", function(){
-        if(this.checked) {
+    document.getElementById("cb").addEventListener("change", function () {
+        if (this.checked) {
             document.getElementById("c").disabled = false;
         } else {
             document.getElementById("c").disabled = true;
         }
     });
-    document.getElementById("c").addEventListener("click", function(){
+    document.getElementById("c").addEventListener("click", function () {
         location.replace(url);
     });
 } else {
