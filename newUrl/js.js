@@ -1,41 +1,40 @@
-var url = "",
-    extra = "",
-    ns = false,
+var targetURL = "",
+    extraText = "",
+    notSafePageEnabled = false,
     longURL = "",
     out = document.getElementById("out"),
     search = location.search;
 
 {
-    let a = search.slice(1, search.length).split("&"),
-        al = a.length;
+    let paramStrs = search.slice(1, search.length).split("&"),
+        paramStrsLen = paramStrs.length;
 
-    for (let i = 0; i < al; i++) {
-        a[i] = a[i].split("=");
-        a[i][1] = decodeURIComponent(a[i][1]).replace(/\+/g, ' ');
+    for (let i = 0; i < paramStrsLen; i++) {
+        let [key, value] = paramStrs[i].split("=");
+        value = decodeURIComponent(value).replace(/\+/g, ' ');
 
-        if (a[i][0] == "u") {
-            url = a[i][1];
-        } else if (a[i][0] == "e") {
-            extra = a[i][1];
-        }
-        if (a[i][0] == "n") {
-            if (a[i][1] == "on") {
-                ns = true;
+        if (key == "u") {
+            targetURL = value;
+        } else if (key == "e") {
+            extraText = value;
+        } else if (key == "n") {
+            if (value == "on") {
+                notSafePageEnabled = true;
             } else {
-                ns = false;
+                notSafePageEnabled = false;
             }
         }
     }
 }
 
-url = btoa(btoa(btoa(url)))
+targetURL = btoa(btoa(btoa(targetURL)))
     .replace(/\+/g, "-")
     .replace(/\//g, "_");
 
-extra = extra
+extraText = extraText
     .replace(/[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_]/g, "-");
 
-longURL = location.protocol + "//" + location.host + location.pathname.substr(0, location.pathname.slice(0, location.pathname.length - 1).lastIndexOf('/')) + "/aM4Kwlp04-AA_fM1?aLw=" + (extra || "aWm24LsZ") + "&Za2=" + url + "&Se23f=" + (ns ? "aZ43" : "l4Pq");
+longURL = location.protocol + "//" + location.host + location.pathname.substr(0, location.pathname.slice(0, location.pathname.length - 1).lastIndexOf('/')) + "/aM4Kwlp04-AA_fM1?aLw=" + (extraText || "aWm24LsZ") + "&Za2=" + targetURL + "&Se23f=" + (notSafePageEnabled ? "aZ43" : "l4Pq");
 
 console.log(longURL);
 
