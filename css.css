@@ -33,6 +33,16 @@ body .sec {
     line-height: normal;
 }
 
+form {
+    width: 100%;
+    max-width: 720px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 1em;
+}
+
 #c {
     color: #ff0000;
 }
