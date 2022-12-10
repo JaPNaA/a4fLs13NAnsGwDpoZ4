@@ -26,7 +26,9 @@ var url = "",
     }
 
     for (let i = 0; i < l; i++) {
-        url = atob(url);
+        url = atob(url
+            .replace(/-/g, "+")
+            .replace(/_/g, "/"));
     }
 }
 
